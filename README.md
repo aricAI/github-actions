@@ -2,16 +2,10 @@
 aind-reusable-workflows
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
-![Code Style](https://img.shields.io/badge/code%20style-black-black)
-
-[![CI](https://github.com/AllenNeuralDynamics/aind-reusable-workflows/actions/workflows/ci.yml/badge.svg)](https://github.com/AllenNeuralDynamics/aind-reusable-workflows/actions/workflows/ci.yml)
-
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
-
 ![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/AllenNeuralDynamics/aind-reusable-workflows?include_prereleases&sort=semver)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/AllenNeuralDynamics/aind-reusable-workflows?display_name=release)
 
-This repository is for workflows that may be reused in other worflows and repositories.
+## This repository is for workflows that may be reused in other worflows and repositories.
 
 GitHub actions workflows are found in .github/workflows
 
