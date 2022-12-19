@@ -1,7 +1,26 @@
+# Call this workflow like this:
+# jobs:
+#   bump-version:
+#     uses: AllenNeuralDynamics/aind-reusable-workflows/.github/workflows/tag.yml
+#     with:
+#       default_branch: main # optional, default: main
+#     secrets:
+#       service_token: ${{ secrets.SERVICE_TOKEN }} # required
+
 name: Bump version
 on:
-  push:
-    branches: [ main ]
+  workflow_call:
+    inputs:
+      default_branch:
+        description: 'Default branch name'
+        default: main
+        required: false
+        type: string
+    secrets:
+      service_token:
+        description: 'use secrets.SERVICE_TOKEN'
+        required: true
+        type: string
 
 jobs:
   bump-version:
@@ -10,16 +29,16 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        ref: ${{ env.DEFAULT_BRANCH }}
+        ref: ${{ inputs.default_branch }}
         fetch-depth: 0
-        token: ${{ secrets.SERVICE_TOKEN }}
+        token: ${{ secrets.service_token }}
 
     - name: Bump version and push tag
       id: tag_version
       uses: mathieudutour/github-tag-action@v6.1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        release_branches: main
+        github_token: ${{ secrets.service_token }}
+        release_branches: ${{ inputs.default_branch }}
         default_bump: patch
 
     - name: Get version file name set variables
