@@ -3,11 +3,11 @@
 #   lint:
 #     uses: AllenNeuralDynamics/aind-reusable-workflows/.github/workflows/lint.yml@main
 #     with:
-#       path_include: 'src' (optional, default: '.**')
-#       path_exclude: 'src/.github' (optional, default: '')
+#       path_include: 'src' # optional, default: '**'
+#       path_exclude: 'src/.github' # optional, default: ''
 #     secrets:
-#       repo-token: ${{ secrets.GITHUB_TOKEN }} (required)
-#     env:  (optional)
+#       service-token: ${{ secrets.SERVICE_TOKEN }} # required
+#     env: # optional
 #       # these will override the defaults in the workflow
 #       # see https://github.com/github/super-linter#environment-variables
 #       # non-default config files
@@ -31,13 +31,10 @@ on:
         required: false
         type: string
     secrets:
-      repo-token:
+      service_token:
         description: 'The GitHub token'
         required: true
     runs-on: ubuntu-latest
-
-env:
-  secrets.GITHUB_TOKEN: ${{ secrets.repo-token }}
 
 jobs:
   lint:
@@ -48,6 +45,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
+        token: ${{ secrets.service_token }}
 
     - name: Lint Commit Message
       uses: wagoid/commitlint-github-action@v5
@@ -56,6 +54,7 @@ jobs:
       uses: github/super-linter/slim@v4
       # Slim image does not include linters: rust, dotenv, armtk, pwsh, c#
       env:
+        GITHUB_TOKEN: ${{ secrets.service_token }}
         VALIDATE_ALL_CODEBASE: false
         DEFAULT_BRANCH: main
         FILTER_REGEX_EXCLUDE: ${{ inputs.path_exclude }}

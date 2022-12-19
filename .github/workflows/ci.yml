@@ -11,17 +11,12 @@ jobs:
   lint:
     uses: AllenNeuralDynamics/aind-reusable-workflows/.github/workflows/lint.yml@main
     secrets:
-      repo-token: ${{ secrets.GITHUB_TOKEN }}
-    env:
-      # these will override the defaults in the workflow
-      # see https://github.com/github/super-linter#environment-variables
-      # non-default config files
-      PYTHON_BLACK_CONFIG_FILE: pyproject.toml
-      PYTHON_ISORT_CONFIG_FILE: pyproject.toml
-      ... # other non-default config files
-      # disable linters
-      VALIDATE_PYTHON_PYLINT: false
-      ... # other linters to disable
+      service-token: ${{ secrets.GITHUB_TOKEN }} # required
+
+  tag:
+    uses: AllenNeuralDynamics/aind-reusable-workflows/.github/workflows/tag.yml@main
+    secrets:
+      service_token: ${{ secrets.SERVICE_TOKEN }} # required
 
   ci:
     name: Run CI Tasks
