@@ -34,7 +34,6 @@ on:
       service_token:
         description: 'The GitHub token'
         required: true
-    runs-on: ubuntu-latest
 
 jobs:
   lint:

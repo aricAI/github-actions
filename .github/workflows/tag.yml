@@ -20,7 +20,6 @@ on:
       service_token:
         description: 'use secrets.SERVICE_TOKEN'
         required: true
-        type: string
 
 jobs:
   bump-version:
