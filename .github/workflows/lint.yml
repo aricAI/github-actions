@@ -6,7 +6,7 @@
 #       path_include: 'src' # optional, default: '**'
 #       path_exclude: 'src/.github' # optional, default: ''
 #     secrets:
-#       repo-token: ${{ secrets.GITHUB_TOKEN }} # required
+#       service-token: ${{ secrets.SERVICE_TOKEN }} # required
 #     env: # optional
 #       # these will override the defaults in the workflow
 #       # see https://github.com/github/super-linter#environment-variables
