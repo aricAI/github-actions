@@ -44,7 +44,7 @@ jobs:
         files: ./coverage.xml # optional
         flags: unittests # optional
         name: codecov-umbrella # optional
-        verbose: true # optional (default = false)
+        verbose: false # optional (default = false)
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
