@@ -4,18 +4,18 @@ on:
     branches: [ main ]
 
 env:
-  GITHUB_TOKEN: ${{ secrets.SERVICE_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   lint:
     uses: AllenNeuralDynamics/aind-reusable-workflows/.github/workflows/lint.yml@main
     secrets:
-      service-token: ${{ secrets.SERVICE_TOKEN }} # required
+      service-token: ${{ env.GITHUB_TOKEN }} # required
 
   tag:
     uses: AllenNeuralDynamics/aind-reusable-workflows/.github/workflows/tag.yml@main
     secrets:
-      service_token: ${{ secrets.SERVICE_TOKEN }} # required
+      service_token: ${{ env.GITHUB_TOKEN }} # required
 
   ci:
     name: Run CI Tasks
