@@ -3,19 +3,19 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+# env:
+#   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   lint:
     uses: AllenNeuralDynamics/aind-reusable-workflows/.github/workflows/lint.yml@main
     secrets:
-      service-token: ${{ secrets.GITHUB_TOKEN }} # required
+      SERVICE_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required
 
   tag:
     uses: AllenNeuralDynamics/aind-reusable-workflows/.github/workflows/tag.yml@main
     secrets:
-      service_token: ${{ secrets.GITHUB_TOKEN }} # required
+      SERVICE_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required
 
   ci:
     name: Run CI Tasks

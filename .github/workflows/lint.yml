@@ -31,8 +31,7 @@ on:
         required: false
         type: string
     secrets:
-      service_token:
-        description: 'The GitHub token'
+      SERVICE_TOKEN:
         required: true
 
 jobs:
@@ -44,7 +43,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
-        token: ${{ secrets.service_token }}
+        token: ${{ secrets.SERVICE_TOKEN }}
 
     - name: Lint Commit Message
       uses: wagoid/commitlint-github-action@v5
@@ -53,7 +52,7 @@ jobs:
       uses: github/super-linter/slim@v4
       # Slim image does not include linters: rust, dotenv, armtk, pwsh, c#
       env:
-        GITHUB_TOKEN: ${{ secrets.service_token }}
+        GITHUB_TOKEN: ${{ secrets.SERVICE_TOKEN }}
         VALIDATE_ALL_CODEBASE: false
         DEFAULT_BRANCH: main
         FILTER_REGEX_EXCLUDE: ${{ inputs.path_exclude }}
