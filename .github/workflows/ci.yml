@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [ main ]
 
-# env:
+# env: # testing if we need this..
 #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
