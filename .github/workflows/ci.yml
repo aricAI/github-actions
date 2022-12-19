@@ -10,12 +10,12 @@ jobs:
   lint:
     uses: AllenNeuralDynamics/aind-reusable-workflows/.github/workflows/lint.yml@main
     secrets:
-      service-token: ${{ env.GITHUB_TOKEN }} # required
+      service-token: ${{ secrets.GITHUB_TOKEN }} # required
 
   tag:
     uses: AllenNeuralDynamics/aind-reusable-workflows/.github/workflows/tag.yml@main
     secrets:
-      service_token: ${{ env.GITHUB_TOKEN }} # required
+      service_token: ${{ secrets.GITHUB_TOKEN }} # required
 
   ci:
     name: Run CI Tasks
