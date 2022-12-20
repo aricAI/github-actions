@@ -9,6 +9,10 @@
 
 on:
   workflow_call:
+    outputs:
+      new_version:
+        description: 'The new version'
+        value: ${{ jobs.bump-version.outputs.new_version }}
     inputs:
       default_branch:
         description: 'Default branch name'
@@ -23,6 +27,8 @@ jobs:
   bump-version:
     name: Bump version
     runs-on: ubuntu-latest
+    outputs:
+      new_version: ${{ steps.output_version.outputs.new_version }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -47,6 +53,9 @@ jobs:
       run: |
         grep "__version__" "$VERSION_FILE"
         sed -i --debug --expression="s|__version__.*|__version__ = \"${{ env.VERSION }}\"|" "$VERSION_FILE"
+    - name: Set output
+      id: output_version
+      run: echo "new_version=${{ env.VERSION }}" >> "$GITHUB_OUTPUT" 
     - name: Commit and Push version bump
       uses: EndBug/add-and-commit@v9
       with:
