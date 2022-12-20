@@ -6,7 +6,7 @@
 #       path_include: 'src' # optional, default: '**'
 #       path_exclude: 'src/.github' # optional, default: ''
 #     secrets:
-#       service-token: ${{ secrets.SERVICE_TOKEN }} # required
+#       SERVICE_TOKEN: ${{ secrets.SERVICE_TOKEN }} # required
 #     env: # optional
 #       # these will override the defaults in the workflow
 #       # see https://github.com/github/super-linter#environment-variables
@@ -22,12 +22,12 @@ on:
   workflow_call:
     inputs:
       path_include:
-        description: 'The path to the files to lint'
+        description: 'The path to lint'
         required: false
         type: string
         default: '**'
       path_exclude:
-        description: 'The path to the files to exclude from linting'
+        description: 'The path to exclude from linting'
         required: false
         type: string
     secrets:
@@ -44,10 +44,8 @@ jobs:
       with:
         fetch-depth: 0
         token: ${{ secrets.SERVICE_TOKEN }}
-
     - name: Lint Commit Message
       uses: wagoid/commitlint-github-action@v5
-
     - name: Lint Code Base
       uses: github/super-linter/slim@v4
       # Slim image does not include linters: rust, dotenv, armtk, pwsh, c#

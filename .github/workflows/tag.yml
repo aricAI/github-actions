@@ -5,9 +5,8 @@
 #     with:
 #       default_branch: main # optional, default: main
 #     secrets:
-#       service_token: ${{ secrets.SERVICE_TOKEN }} # required
+#       SERVICE_TOKEN: ${{ secrets.SERVICE_TOKEN }} # required
 
-name: Bump version
 on:
   workflow_call:
     inputs:
@@ -22,6 +21,7 @@ on:
 
 jobs:
   bump-version:
+    name: Bump version
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -30,7 +30,6 @@ jobs:
         ref: ${{ inputs.default_branch }}
         fetch-depth: 0
         token: ${{ secrets.SERVICE_TOKEN }}
-
     - name: Bump version and push tag
       id: tag_version
       uses: mathieudutour/github-tag-action@v6.1
@@ -38,7 +37,6 @@ jobs:
         github_token: ${{ secrets.SERVICE_TOKEN }}
         release_branches: ${{ inputs.default_branch }}
         default_bump: patch
-
     - name: Get version file name set variables
       run: |
         pkg_name=$(grep -P 'version = \{attr = .*\}' pyproject.toml | grep -oP '\w+.__version__')
