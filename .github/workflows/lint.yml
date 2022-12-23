@@ -1,7 +1,7 @@
 # Call this workflow with:
 # jobs:
 #   lint:
-#     uses: AllenNeuralDynamics/aind-reusable-workflows/.github/workflows/lint.yml@main
+#     uses: AllenNeuralDynamics/aind-github-actions/.github/workflows/lint.yml@main
 #     with:
 #       path_include: 'src' # optional, default: '**'
 #       path_exclude: 'src/.github' # optional, default: ''
