@@ -1,7 +1,7 @@
 # Call this workflow like this:
 # jobs:
 #   bump-version:
-#     uses: AllenNeuralDynamics/aind-reusable-workflows/.github/workflows/tag.yml
+#     uses: AllenNeuralDynamics/aind-github-actions/.github/workflows/tag.yml
 #     with:
 #       default_branch: main # optional, default: main
 #     secrets:
