@@ -2,15 +2,10 @@
 aind-github-actions
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
-[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
-![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/AllenNeuralDynamics/aind-github-actions?include_prereleases&sort=semver)
 
 ## This repository is for workflows that may be reused in other workflows and repositories.
 
-GitHub actions workflows are found in .github/workflows
-
-
-
+GitHub actions workflows are found in .github/workflows.
 
 ### Pull requests
 
