@@ -1,11 +1,34 @@
-# AIND GitHub Actions (Reusable Workflows)
-aind-github-actions
+# GitHub Actions (Reusable Workflows)
+github-actions
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
 
 ## This repository is for workflows that may be reused in other workflows and repositories.
 
 GitHub actions workflows are found in .github/workflows.
+
+# Call the "lint" workflow with:
+```
+jobs:
+  lint:
+    uses: aricAI/github-actions/.github/workflows/lint.yml@main
+    with:
+      path_include: 'src' # optional, default: '**'
+      path_exclude: 'src/.github' # optional, default: ''
+    secrets:
+      SERVICE_TOKEN: ${{ secrets.SERVICE_TOKEN }} # required
+    env: # optional
+      # these will override the defaults in the workflow
+      # see https://github.com/github/super-linter#environment-variables
+      # non-default config files
+      PYTHON_BLACK_CONFIG_FILE: pyproject.toml
+      PYTHON_ISORT_CONFIG_FILE: pyproject.toml
+      ... # other non-default config files
+      # disable linters
+      VALIDATE_PYTHON_PYLINT: false
+      ... # other linters to disable
+```
+
 
 ### Pull requests
 
