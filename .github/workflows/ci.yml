@@ -8,12 +8,12 @@ on:
 
 jobs:
   lint:
-    uses: AllenNeuralDynamics/aind-github-actions/.github/workflows/lint.yml@main
+    uses: aricAI/github-actions/.github/workflows/lint.yml@main
     secrets:
       SERVICE_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required
 
   tag:
-    uses: AllenNeuralDynamics/aind-github-actions/.github/workflows/tag.yml@main
+    uses: aricAI/github-actions/.github/workflows/tag.yml@main
     secrets:
       SERVICE_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required
 
