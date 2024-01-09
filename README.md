@@ -7,7 +7,7 @@ github-actions
 
 GitHub actions workflows are found in .github/workflows.
 
-# Call the "lint" workflow with:
+### Call the "lint" workflow with:
 ```
 jobs:
   lint:
@@ -28,7 +28,16 @@ jobs:
       VALIDATE_PYTHON_PYLINT: false
       ... # other linters to disable
 ```
-
+### Call the "tag" workflow like this:
+```
+jobs:
+  bump-version:
+    uses: aricAI/github-actions/.github/workflows/tag.yml
+    with:
+      default_branch: main # optional, default: main
+    secrets:
+      SERVICE_TOKEN: ${{ secrets.SERVICE_TOKEN }} # required
+```
 
 ### Pull requests
 
